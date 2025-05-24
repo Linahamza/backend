@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ECommerceBack
 
 This project was generated with [`@vendure/create`](https://github.com/vendure-ecommerce/vendure/tree/master/packages/create).
@@ -145,3 +146,7 @@ You can also run any pending migrations manually, without starting the server vi
 - Make sure your package manager is up to date.
 - **Not recommended**: if none of the above helps to resolve the issue, install sharp specifying your machines OS and Architecture. For example: `pnpm install sharp --config.platform=linux --config.architecture=x64` or `npm install sharp --os linux --cpu x64`
 
+=======
+# backend
+backend vendure ecommerce V3.2.2 avec une BDD postgreSQL
+>>>>>>> 5b61d739c4588bec86300a08fae32c1cebd96aa0
