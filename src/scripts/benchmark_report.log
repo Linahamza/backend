@@ -1,0 +1,16 @@
+📊 Rapport benchmark - 2025-05-01T20:26:20.925Z
+
+
+📦 [Benchmark Lecture Redis vs PostgreSQL]
+➡️ Moyenne Redis: 0.62 ms
+➡️ Moyenne PostgreSQL: 0.42 ms
+
+🔍 [Benchmark Recherche Elasticsearch]
+🔎 "chocolat" → 10 résultats en 20.58 ms
+🔎 "café" → 10 résultats en 10.51 ms
+🔎 "fromage" → 10 résultats en 5.95 ms
+🔎 "thé" → 10 résultats en 6.04 ms
+🔎 "huile" → 10 résultats en 11.81 ms
+➡️ Moyenne globale ES: 10.98 ms
+
+✅ Fin du benchmark. Résultats dans C:\Users\LINA HAMZA\Desktop\ECommerceBack\src\scripts\benchmark_report.log

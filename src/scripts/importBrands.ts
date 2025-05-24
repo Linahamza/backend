@@ -6,11 +6,11 @@ dotenv.config();
 
 // PostgreSQL client setup
 const client = new Client({
-  host: process.env.DB_HOST || 'localhost',
-  port: Number(process.env.DB_PORT) || 5432,
-  user: process.env.DB_USERNAME || 'postgres',
-  password: process.env.DB_PASSWORD || 'root',
-  database: process.env.DB_NAME || 'carrefour33',
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT) ,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 async function importBrands() {

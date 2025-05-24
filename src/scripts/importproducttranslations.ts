@@ -28,15 +28,19 @@ async function insertProductTranslations() {
       const baseId = product.baseId;
       const name = product.name || "Unnamed Product";
       const description = product.description || "No description available";
-      const languageCode = 'en';
+      const languageCode = 'fr';
       const timestamp = new Date();
       const slug = name.toLowerCase().replace(/\s+/g, '-');
+
+      // Convert name and description to UTF-8 before insertion
+      const utf8Name = Buffer.from(name, 'utf8');
+      const utf8Description = Buffer.from(description, 'utf8');
 
       await client.query(
         `INSERT INTO "product_translation" ("id", "baseId", "languageCode", "name", "slug", "description", "createdAt", "updatedAt")
          VALUES (nextval('"product_translation_id_seq"'::regclass), $1, $2, $3, $4, $5, $6, $7)
          ON CONFLICT ("id") DO NOTHING;`,
-        [baseId, languageCode, name, slug, description, timestamp, timestamp]
+        [baseId, languageCode, utf8Name, slug, utf8Description, timestamp, timestamp]
       );
     }
     console.log('📌 Product translations inserted successfully!');
@@ -46,7 +50,6 @@ async function insertProductTranslations() {
 
   } catch (error) {
     console.error('❌ Error inserting product translations:', error);
-    // If there's an error in the first insertion, skip the second insertion
   } finally {
     await client.end(); // Close connection after both operations
     console.log('🔌 Connection closed.');
@@ -66,14 +69,17 @@ async function insertProductVariantTranslations() {
     for (const variant of variantResult.rows) {
       const baseId = variant.baseId;
       const name = variant.name || "Unnamed Variant";
-      const languageCode = 'en';
+      const languageCode = 'fr';
       const timestamp = new Date();
+
+      // Convert variant name to UTF-8 before insertion
+      const utf8Name = Buffer.from(name, 'utf8');
 
       await client.query(
         `INSERT INTO "product_variant_translation" ("id", "baseId", "languageCode", "name", "createdAt", "updatedAt")
          VALUES (nextval('"product_variant_translation_id_seq"'::regclass), $1, $2, $3, $4, $5)
          ON CONFLICT ("id") DO NOTHING;`,
-        [baseId, languageCode, name, timestamp, timestamp]
+        [baseId, languageCode, utf8Name, timestamp, timestamp]
       );
     }
     console.log('📌 Product variant translations inserted successfully!');
